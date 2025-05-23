@@ -1,0 +1,74 @@
+.products {
+  padding: 20px;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.products > p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-left: 6px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.card-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-item:nth-child(1) {
+  background-color: #e0f0ff;
+  border-left-color: #007bff;
+}
+
+.card-item:nth-child(2) {
+  background-color: #ffe0e0;
+  border-left-color: #dc3545;
+}
+
+.card-item:nth-child(3) {
+  background-color: #fff7e0;
+  border-left-color: #ffc107;
+}
+
+.card-item:nth-child(4) {
+  background-color: #e0ffe4;
+  border-left-color: #28a745;
+}
+
+.card-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+
+.card-item svg {
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.5;
+  color: #555;
+}

@@ -1,0 +1,63 @@
+.profileModal {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #1f1f1f;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  width: 220px;
+  animation: fadeIn 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.profileModal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profileModal li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profileModal li:hover {
+  background-color: #333;
+}
+
+.profileModal .icon {
+  color: #999;
+}
+
+.profileModal li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.profileModal li a:hover {
+  background-color: #333;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

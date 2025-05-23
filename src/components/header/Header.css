@@ -1,0 +1,74 @@
+.header {
+  height: 70px;
+  background-color: #1a1835;
+  border-bottom: 1px solid #e5e5e5;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  left: 230px;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0header 0.04);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.header .page-name h2 {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+}
+
+.header .search-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+  margin: 0 40px;
+}
+
+.header .search-input input {
+  width: 100%;
+  padding: 8px 36px 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+
+.header .search-input svg {
+  position: absolute;
+  right: 10px;
+  color: #666;
+}
+
+.header .profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.header .profile-image img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header .username {
+  color: white;
+}
+
+.header .headerIcon {
+  color: white;
+}

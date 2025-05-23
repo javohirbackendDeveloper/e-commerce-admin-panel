@@ -1,0 +1,112 @@
+.category-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.category-page .parent-category {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 12px;
+}
+
+.category-page .parent-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.category-page .parent-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.category-page .add-subcategory-btn {
+  background-color: #3286e0;
+  color: white;
+  width: 100px;
+  height: 40px;
+  border-radius: 30px;
+  margin-left: auto;
+}
+
+.category-page .child-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category-page .category-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  transition: box-shadow 0.3s ease;
+}
+
+.category-page .category-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-page .category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-page .category-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.category-page .category-actions button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.category-page .expand-btn {
+  background-color: #007bff;
+}
+.category-page .expand-btn:hover {
+  background-color: #0056b3;
+}
+
+.category-page .category-details {
+  margin-top: 8px;
+  padding-left: 12px;
+  color: #555;
+  font-style: italic;
+}
+
+.category-page .notFoundCategory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 40px auto;
+  max-width: 500px;
+}
+
+.category-page .notFoundCategory img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.category-page .notFoundCategory h4 {
+  font-size: 18px;
+  color: #555;
+  font-weight: 500;
+}
