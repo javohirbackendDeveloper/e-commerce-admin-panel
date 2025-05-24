@@ -29,9 +29,9 @@ function AddSubCategoryModal({
     try {
       setLoading(true);
       if (selectedCategory) {
-        await updateCategory(selectedCategory.id, formData);
+        await updateCategory(selectedCategory?.id, { title });
       } else {
-        await createSubCategory({ title, parentId: parentCategory.id });
+        await createSubCategory({ title, parentId: parentCategory?.id });
       }
       setShowModal(false);
     } catch (err) {

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { CategoryStore } from "../../../stores/category.store";
 import "./GetOneCategory.css";
 import AddSubCategoryModal from "../addSubCategoryModal/AddSubCategoryModal";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import { Plus } from "lucide-react";
+import { ArrowBigLeft } from "lucide-react";
 
 function GetOneCategory() {
   const { id } = useParams();
@@ -12,18 +13,22 @@ function GetOneCategory() {
     getAllChildrenByParentCategory,
     allChildCategories,
     parentCategory,
+    setParentCategory,
     deleteCategory,
   } = CategoryStore();
 
-  const [parentCat, setParentCat] = useState(parentCategory);
   const [expandedId, setExpandedId] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const navigate = useNavigate();
 
   const handleAddSubCategory = (category) => {
-    setSelectedCategory(category);
+    setParentCategory(category);
+    setSelectedCategory(null);
     setShowModal(true);
   };
+
+  // deleting parent category
 
   const handleDelete = (id) => {
     const confirmDelete = window.confirm(
@@ -36,15 +41,19 @@ function GetOneCategory() {
 
   useEffect(() => {
     getAllChildrenByParentCategory(id);
-    setParentCat(parentCategory);
-  }, [id, parentCategory]);
+  }, [id]);
 
-  const toggleExpand = (categoryId) => {
-    setExpandedId(expandedId === categoryId ? null : categoryId);
+  // go back function
+  const handleBackNavigate = () => {
+    navigate(-1);
   };
-
   return (
     <div className="category-page">
+      <ArrowBigLeft
+        size={30}
+        className="backIcon"
+        onClick={handleBackNavigate}
+      />
       {parentCategory && (
         <div className="parent-category">
           {parentCategory.icon && (
@@ -66,22 +75,28 @@ function GetOneCategory() {
             <div
               key={cat.id}
               className={`category-card ${
-                expandedId === cat.id ? "expanded" : ""
+                expandedId === cat?.id ? "expanded" : ""
               }`}
+              onClick={() => navigate(`/getOneCategory/${cat.id}`)}
             >
               <div className="category-header">
                 <span>{cat.title}</span>
+
                 <div className="category-actions">
                   <button
                     className="expand-btn"
-                    onClick={() => handleAddSubCategory(cat)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAddSubCategory(cat);
+                    }}
                     title="Subturkum qo‘shish"
                   >
                     <Plus size={15} />
                   </button>
                   <button
                     className="expand-btn"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation();
                       setSelectedCategory(cat);
                       setShowModal(true);
                     }}
@@ -91,31 +106,21 @@ function GetOneCategory() {
                   </button>
                   <button
                     className="expand-btn"
-                    onClick={() => handleDelete(cat.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(cat.id);
+                    }}
                     title="O‘chirish"
                   >
                     🗑
                   </button>
-                  <button
-                    className="expand-btn"
-                    onClick={() => toggleExpand(cat.id)}
-                    title="Ochish/Yopish"
-                  >
-                    {expandedId === cat.id ? "▲" : "▼"}
-                  </button>
                 </div>
               </div>
-
-              {expandedId === cat.id && (
-                <div className="category-details">
-                  <p>Children (dynamic load in future)</p>
-                </div>
-              )}
             </div>
           ))) || (
           <div className="notFoundCategory">
             <img src="../noCategory.png" alt="no category" />
-            <h4>Bu turkumda hozricha ichki turkum qo'shilmagan</h4>
+            <h4>Bu turkumga hozircha ichki turkum qo'shilmagan</h4>
           </div>
         )}
       </div>
@@ -124,7 +129,9 @@ function GetOneCategory() {
         <AddSubCategoryModal
           setShowModal={setShowModal}
           showAddModal={showModal}
-          parentCategory={selectedCategory}
+          parentCategory={parentCategory}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
         />
       )}
     </div>

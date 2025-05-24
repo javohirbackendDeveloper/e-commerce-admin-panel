@@ -11,6 +11,7 @@ import { LayoutDashboard } from "lucide-react";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Product from "../pages/product/Product";
 import { Popcorn } from "lucide-react";
+import Brand from "../pages/brand/Brand";
 
 export const Pages = [
   {
@@ -27,17 +28,11 @@ export const Pages = [
     url: "/category",
     icon: ChartBarStacked,
   },
-  {
-    id: 3,
-    name: "Ichki turkumlar",
-    component: Dashboard,
-    url: "/subCategory",
-    icon: ListTree,
-  },
+
   {
     id: 4,
     name: "Brendlar",
-    component: Dashboard,
+    component: Brand,
     url: "/brands",
     icon: Slack,
   },

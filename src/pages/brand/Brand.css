@@ -1,12 +1,12 @@
-.category {
+.brand {
   padding: 20px;
 }
 
-.category .category h2 {
+.brand h2 {
   margin-bottom: 16px;
 }
 
-.category .category-table {
+.brand-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
@@ -15,30 +15,30 @@
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
 }
 
-.category .category-table th,
-.category .category-table td {
+.brand-table th,
+.brand-table td {
   padding: 12px 16px;
   text-align: left;
   border-bottom: 1px solid #eee;
 }
 
-.category .category-table th {
+.brand-table th {
   background-color: #f5f5f5;
   font-weight: 600;
 }
 
-.category .category-table tr:hover {
+.brand-table tr:hover {
   background-color: #f9f9f9;
   cursor: pointer;
 }
 
-.category .category-icon {
+.brand-icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
 }
 
-.category .action-btn {
+.brand-action-btn {
   margin-right: 8px;
   padding: 6px 12px;
   border: none;
@@ -47,18 +47,18 @@
   cursor: pointer;
 }
 
-.category .update {
+.brand-update {
   background-color: #3498db;
   color: white;
 }
 
-.category .delete {
+.brand-delete {
   background-color: #e74c3c;
   color: white;
 }
 
-.category .addCatBtn {
-  margin-left: 1000px;
+.brand-add-btn {
+  margin-left: auto;
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 20px;
@@ -70,33 +70,17 @@
   transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.category .addCatBtn:hover {
+.brand-add-btn:hover {
   background-color: #25168f;
   transform: scale(1.02);
 }
 
-.category .notFoundCategory {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin: 40px auto;
-  max-width: 500px;
+.brand .addbtn {
+  margin-left: 1000px;
+  background-color: #0e7ec9;
+  color: white;
 }
-
-.category .notFoundCategory img {
-  width: 150px;
-  height: auto;
-  margin-bottom: 20px;
-  opacity: 0.8;
-}
-
-.category .notFoundCategory h4 {
-  font-size: 18px;
-  color: #555;
-  font-weight: 500;
+.brand .addbtn:hover {
+  background-color: #4190c5;
+  color: white;
 }

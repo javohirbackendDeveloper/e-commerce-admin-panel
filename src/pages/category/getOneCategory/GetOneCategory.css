@@ -4,6 +4,16 @@
   margin: auto;
 }
 
+.category-page .backIcon {
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.category-page .backIcon:hover {
+  color: #007bff;
+}
 .category-page .parent-category {
   display: flex;
   align-items: center;

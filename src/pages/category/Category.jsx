@@ -50,44 +50,61 @@ function Category() {
       </Button>
       <h2>Asosiy turkumlar</h2>
       <table className="category-table">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Icon</th>
-            <th>Nomi</th>
-            <th>Ichki turkumlar</th>
-            <th>Amallar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allCategories.map((category, index) => (
-            <tr key={category.id} onClick={(e) => handleRowClick(category, e)}>
-              <td>{index + 1}</td>
-              <td>
-                <img src={category.icon} alt="icon" className="category-icon" />
-              </td>
-              <td>{category.title}</td>
-              <td>{category.children || 0}</td>
-              <td>
-                <button
-                  className="action-btn update"
-                  onClick={() => {
-                    setSelectedCategory(category);
-                    setShowAddModal(true);
-                  }}
-                >
-                  Yangilash
-                </button>
-                <button
-                  className="action-btn delete"
-                  onClick={() => handleDelete(category.id)}
-                >
-                  O‘chirish
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {(allCategories.length > 0 && (
+          <>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Icon</th>
+                <th>Nomi</th>
+                <th>Ichki turkumlar</th>
+                <th>Amallar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allCategories.length > 0 &&
+                allCategories.map((category, index) => (
+                  <tr
+                    key={category.id}
+                    onClick={(e) => handleRowClick(category, e)}
+                  >
+                    <td>{index + 1}</td>
+                    <td>
+                      <img
+                        src={category.icon}
+                        alt="icon"
+                        className="category-icon"
+                      />
+                    </td>
+                    <td>{category.title}</td>
+                    <td>{category.children || 0}</td>
+                    <td>
+                      <button
+                        className="action-btn update"
+                        onClick={() => {
+                          setSelectedCategory(category);
+                          setShowAddModal(true);
+                        }}
+                      >
+                        Yangilash
+                      </button>
+                      <button
+                        className="action-btn delete"
+                        onClick={() => handleDelete(category.id)}
+                      >
+                        O‘chirish
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </>
+        )) || (
+          <div className="notFoundCategory">
+            <img src="../noCategory.png" alt="no category" />
+            <h4>Bu turkumga hozircha ichki turkum qo'shilmagan</h4>
+          </div>
+        )}
       </table>
       {showAddModal && (
         <AddCategoryModal

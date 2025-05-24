@@ -14,6 +14,7 @@ import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { AuthStore } from "./stores/auth.store";
 import GetOneCategory from "./pages/category/getOneCategory/GetOneCategory";
+import Brand from "./pages/brand/Brand";
 
 function App() {
   const [pageName, setPageName] = useState("Asosiy panel");
@@ -33,8 +34,7 @@ function App() {
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/category" element={<Category />} />
-              <Route path="/subCategory" element={<Dashboard />} />
-              <Route path="/brands" element={<Dashboard />} />
+              <Route path="/brands" element={<Brand />} />
               <Route path="/variantType" element={<Dashboard />} />
               <Route path="/variants" element={<Dashboard />} />
               <Route path="/products" element={<Product />} />
