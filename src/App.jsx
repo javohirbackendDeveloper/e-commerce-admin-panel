@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import { AuthStore } from "./stores/auth.store";
 import GetOneCategory from "./pages/category/getOneCategory/GetOneCategory";
 import Brand from "./pages/brand/Brand";
+import Variants from "./pages/variant/Variants";
+import GetOneFilter from "./pages/variant/getOneFilter/GetOneFilter";
 
 function App() {
   const [pageName, setPageName] = useState("Asosiy panel");
@@ -35,8 +37,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/category" element={<Category />} />
               <Route path="/brands" element={<Brand />} />
-              <Route path="/variantType" element={<Dashboard />} />
-              <Route path="/variants" element={<Dashboard />} />
+              <Route path="/variants" element={<Variants />} />
               <Route path="/products" element={<Product />} />
               <Route path="/orders" element={<Dashboard />} />
               <Route path="/coupons" element={<Dashboard />} />
@@ -45,6 +46,7 @@ function App() {
 
               {/* OTHER PAGES */}
               <Route path="/getOneCategory/:id" element={<GetOneCategory />} />
+              <Route path="/getOneFilter/:id" element={<GetOneFilter />} />
             </Routes>
           </div>
         </div>

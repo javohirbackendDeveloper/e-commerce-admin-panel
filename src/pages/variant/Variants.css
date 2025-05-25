@@ -1,0 +1,36 @@
+.variants-container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #111;
+}
+
+.tab-btn.active {
+  color: #000;
+  font-weight: 600;
+  border-bottom: 3px solid #3f51b5;
+}
+
+.tab-content {
+  padding-top: 10px;
+}

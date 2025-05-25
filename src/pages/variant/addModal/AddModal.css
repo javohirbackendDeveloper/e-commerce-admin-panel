@@ -1,0 +1,18 @@
+.add-modal-container {
+  padding: 10px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  padding-top: 10px;
+}
+
+.modal-body .MuiFormControl-root {
+  margin-bottom: 20px;
+}

@@ -12,6 +12,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Product from "../pages/product/Product";
 import { Popcorn } from "lucide-react";
 import Brand from "../pages/brand/Brand";
+import Variants from "../pages/variant/Variants";
 
 export const Pages = [
   {
@@ -38,48 +39,41 @@ export const Pages = [
   },
   {
     id: 5,
-    name: "Variant turlar",
-    component: Dashboard,
-    url: "/variantType",
-    icon: FileType,
-  },
-  {
-    id: 6,
-    name: "Variantlar",
-    component: Dashboard,
+    name: "Filterlar",
+    component: Variants,
     url: "/variants",
     icon: Variable,
   },
   {
-    id: 7,
+    id: 6,
     name: "Mahsulotlar",
     component: Product,
     url: "/products",
     icon: Popcorn,
   },
   {
-    id: 8,
+    id: 7,
     name: "Buyurtmalar",
     component: Dashboard,
     url: "/orders",
     icon: ListOrdered,
   },
   {
-    id: 9,
+    id: 8,
     name: "Kuponlar",
     component: Dashboard,
     url: "/coupons",
     icon: Coins,
   },
   {
-    id: 10,
+    id: 9,
     name: "Posterlar",
     component: Dashboard,
     url: "/posters",
     icon: Image,
   },
   {
-    id: 11,
+    id: 10,
     name: "Bildirishnomalar",
     component: Dashboard,
     url: "/notifications",
