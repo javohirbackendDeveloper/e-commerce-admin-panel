@@ -3,7 +3,28 @@
 }
 
 .brand h2 {
-  margin-bottom: 16px;
+  margin: 20px 0 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.brand .addbtn {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 20px;
+  background-color: #0e7ec9;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+.brand .addbtn:hover {
+  background-color: #4190c5;
+  transform: scale(1.02);
+  color: white;
 }
 
 .brand-table {
@@ -12,39 +33,46 @@
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
 }
 
 .brand-table th,
 .brand-table td {
-  padding: 12px 16px;
+  padding: 14px 18px;
   text-align: left;
   border-bottom: 1px solid #eee;
 }
 
 .brand-table th {
-  background-color: #f5f5f5;
+  background-color: #f0f2f5;
   font-weight: 600;
+  color: #444;
+}
+
+.brand-table td select {
+  width: 50%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-size: 14px;
 }
 
 .brand-table tr:hover {
   background-color: #f9f9f9;
-  cursor: pointer;
-}
-
-.brand-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
 }
 
 .brand-action-btn {
-  margin-right: 8px;
-  padding: 6px 12px;
+  margin-right: 6px;
+  padding: 6px 10px;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .brand-update {
@@ -52,35 +80,41 @@
   color: white;
 }
 
+.brand-update:hover {
+  background-color: #2980b9;
+}
+
 .brand-delete {
   background-color: #e74c3c;
   color: white;
 }
 
-.brand-add-btn {
-  margin-left: auto;
-  display: inline-block;
+.brand-delete:hover {
+  background-color: #c0392b;
+}
+
+.brand .notFoundCategory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 40px auto;
+  max-width: 500px;
+}
+
+.brand .notFoundCategory img {
+  width: 150px;
+  height: auto;
   margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: #274fae;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  opacity: 0.85;
 }
 
-.brand-add-btn:hover {
-  background-color: #25168f;
-  transform: scale(1.02);
-}
-
-.brand .addbtn {
-  margin-left: 1000px;
-  background-color: #0e7ec9;
-  color: white;
-}
-.brand .addbtn:hover {
-  background-color: #4190c5;
-  color: white;
+.brand .notFoundCategory h4 {
+  font-size: 18px;
+  color: #555;
+  font-weight: 500;
 }

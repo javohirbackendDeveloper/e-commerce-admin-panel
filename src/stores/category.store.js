@@ -114,7 +114,9 @@ export const CategoryStore = create((set, get) => ({
         "/products/category/getLeafCategories"
       );
 
-      console.log({ res });
+      if (res.data[0]?.id) {
+        set({ leafCategories: res.data });
+      }
     } catch (err) {
       console.log(err);
 

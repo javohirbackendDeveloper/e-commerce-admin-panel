@@ -9,6 +9,8 @@ import { CategoryStore } from "../../stores/category.store";
 function Brand() {
   const { getAllBrands, allBrands, deleteBrand } = BrandStore();
   const [showModal, setShowModal] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState(null);
+
   useEffect(() => {
     getAllBrands();
   }, []);
@@ -22,6 +24,13 @@ function Brand() {
     }
   };
 
+  //   update brand
+
+  const updateBrand = (brand) => {
+    setShowModal(!showModal);
+    setSelectedBrand(brand);
+  };
+
   return (
     <div className="brand">
       <Button className="addbtn" onClick={() => setShowModal(!showModal)}>
@@ -29,40 +38,59 @@ function Brand() {
       </Button>
       <h2>Brendlar</h2>
       <table className="brand-table">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Brand nomi</th>
-            <th>Turkum nomi</th>
-            <th>Amallar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allBrands?.map((brand, index) => (
-            <tr key={brand.id}>
-              <td>{index + 1}</td>
-              <td>{brand.name}</td>
-              <td>{brand.category?.title || "No Category"}</td>
-              <td>
-                <button
-                  className="brand-action-btn brand-update"
-                  onClick={() => console.log("Update", brand.id)}
-                >
-                  <Pencil size={16} />
-                </button>
-                <button
-                  className="brand-action-btn brand-delete"
-                  onClick={() => handleDelete(brand.id)}
-                >
-                  <Trash2 size={16} />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {(allBrands.length > 0 && (
+          <>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Brand nomi</th>
+                <th>Turkum nomi</th>
+                <th>Amallar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allBrands?.map((brand, index) => (
+                <tr key={brand.id}>
+                  <td>{index + 1}</td>
+                  <td>{brand?.name}</td>
+                  <td>
+                    <select>
+                      {brand?.categories.map((cat) => (
+                        <option key={cat.id}>{cat?.category?.title}</option>
+                      ))}
+                    </select>
+                  </td>
+                  <td>
+                    <button
+                      className="brand-action-btn brand-update"
+                      onClick={() => updateBrand(brand)}
+                    >
+                      <Pencil size={16} />
+                    </button>
+                    <button
+                      className="brand-action-btn brand-delete"
+                      onClick={() => handleDelete(brand.id)}
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </>
+        )) || (
+          <div className="notFoundCategory">
+            <img src="../noCategory.png" alt="no category" />
+            <h4>Hozircha brandlar qo'shilmagan</h4>
+          </div>
+        )}
       </table>
       {showModal && (
-        <AddBrandModal setShowModal={setShowModal} showModal={showModal} />
+        <AddBrandModal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          selectedBrand={selectedBrand}
+        />
       )}
     </div>
   );
