@@ -1,0 +1,10 @@
+.getOneFilter .arrow-icon {
+  margin-bottom: 30px;
+  background-color: rgb(143, 141, 141);
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+}
+.getOneFilter .arrow-icon:hover {
+  color: rgb(77, 77, 224);
+}

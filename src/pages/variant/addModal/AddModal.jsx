@@ -16,13 +16,18 @@ import { X } from "lucide-react";
 import "./AddModal.css";
 import { toast } from "sonner";
 import { FilterStore } from "../../../stores/filter.store";
-
+import { CategoryStore } from "../../../stores/category.store";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 function AddModal({ showModal, setShowModal, currentPage, editingFilter }) {
   const [inputType, setInputType] = useState("");
   const [filterName, setFilterName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const { createGeneralFilter, updateFilter } = FilterStore();
+  const { updateFilter, createSpecificFilter } = FilterStore();
+  const { getAllLeafCategory, leafCategories } = CategoryStore();
 
   useEffect(() => {
     if (editingFilter) {
@@ -49,7 +54,6 @@ function AddModal({ showModal, setShowModal, currentPage, editingFilter }) {
 
     try {
       setIsLoading(true);
-      console.log({ editingFilter });
 
       if (editingFilter) {
         await updateFilter(editingFilter.id, {
@@ -57,10 +61,11 @@ function AddModal({ showModal, setShowModal, currentPage, editingFilter }) {
           title: filterName,
         });
       } else {
-        await createGeneralFilter({
+        await createSpecificFilter({
           inputType,
           title: filterName,
           type: currentPage === "Umumiy" ? "GENERAL" : "SPECIFIC",
+          categoryIds: selectedCategories,
         });
       }
 
@@ -71,6 +76,18 @@ function AddModal({ showModal, setShowModal, currentPage, editingFilter }) {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    getAllLeafCategory();
+  }, []);
+
+  const handleCheckboxChange = (id) => {
+    setSelectedCategories((prev) =>
+      prev.includes(id) ? prev.filter((cid) => cid !== id) : [...prev, id]
+    );
+  };
+
+  console.log({ selectedCategories });
 
   return (
     <Dialog onClose={handleClose} open={showModal} maxWidth="sm" fullWidth>
@@ -99,6 +116,26 @@ function AddModal({ showModal, setShowModal, currentPage, editingFilter }) {
               <MenuItem value="RANGE">Range</MenuItem>
             </Select>
           </FormControl>
+
+          {currentPage === "Maxsus" && (
+            <div className="checkbox-group">
+              <p className="checkbox-label">Turkum(lar)ni tanlang:</p>
+              <FormGroup>
+                {leafCategories.map((category) => (
+                  <FormControlLabel
+                    key={category.id}
+                    control={
+                      <Checkbox
+                        checked={selectedCategories.includes(category.id)}
+                        onChange={() => handleCheckboxChange(category.id)}
+                      />
+                    }
+                    label={category.title}
+                  />
+                ))}
+              </FormGroup>
+            </div>
+          )}
 
           <TextField
             fullWidth

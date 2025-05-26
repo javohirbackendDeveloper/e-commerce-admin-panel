@@ -81,3 +81,12 @@
   text-decoration: underline;
   color: #125a9c;
 }
+
+.general .selectOfSpecificFilter {
+  width: 70%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-size: 14px;
+}
