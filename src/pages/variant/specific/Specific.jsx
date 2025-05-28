@@ -3,7 +3,7 @@ import { Button, IconButton } from "@mui/material";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import AddModal from "../addModal/AddModal";
 import { FilterStore } from "../../../stores/filter.store";
-import "../general/General.css";
+import "./Specific.css";
 import AddValueModal from "../addValueModal/AddValueModal";
 import { Link } from "react-router-dom";
 
@@ -49,7 +49,7 @@ function Specific() {
             setShowModal(true);
           }}
         >
-          Bitta turkum uchun filtr qo'shish
+          Filtr qo'shish
         </Button>
       </div>
 

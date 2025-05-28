@@ -8,18 +8,6 @@ export const FilterStore = create((set, get) => ({
   foundOneFilter: null,
   allSpecificFilters: [],
 
-  async getAllGeneralFilters() {
-    try {
-      const res = await axiosInstance.get("/products/filters/general");
-
-      if (res.data[0]?.id) {
-        set({ allGeneralFilters: res.data });
-      }
-    } catch (err) {
-      toast.error(err.message || "Brandlarni olishda xatolik");
-    }
-  },
-
   async findOneFilter(id) {
     try {
       const res = await axiosInstance.get("/products/filters/general/" + id);
@@ -32,36 +20,6 @@ export const FilterStore = create((set, get) => ({
     }
   },
 
-  async createGeneralFilter(data) {
-    try {
-      const res = await axiosInstance.post("/products/filters/general", data);
-
-      if (res.data?.id) {
-        toast.success("Filter muvaffaqiyatli qo'shildi");
-        await get().getAllGeneralFilters();
-        await get().getAllSpecificFilters();
-      }
-    } catch (err) {
-      toast.error(err.message || "Brandlarni olishda xatolik");
-    }
-  },
-
-  async deleteFilter(id) {
-    try {
-      const res = await axiosInstance.delete("/products/filters/general/" + id);
-
-      if (res.data?.id) {
-        toast.success(`${res.data?.title} filteri o'chirildi`);
-
-        await get().getAllGeneralFilters();
-        await get().getAllSpecificFilters();
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error(err.message || "Turkumlarni olishda xatolik bo'ldi");
-    }
-  },
-
   async updateFilter(id, data) {
     try {
       const res = await axiosInstance.patch(
@@ -69,12 +27,9 @@ export const FilterStore = create((set, get) => ({
         data
       );
 
-      console.log({ res });
-
       if (res.data?.id) {
         toast.success(`Filter muvaffaqiyatli yangilandi`);
 
-        await get().getAllGeneralFilters();
         await get().getAllSpecificFilters();
       }
     } catch (err) {
@@ -93,7 +48,6 @@ export const FilterStore = create((set, get) => ({
 
       if (res.data?.createdFilterCategories) {
         toast.success("Filter muvaffaqiyatli qo'shildi");
-        await get().getAllGeneralFilters();
         await get().getAllSpecificFilters();
       }
     } catch (err) {
@@ -124,7 +78,6 @@ export const FilterStore = create((set, get) => ({
       if (res.data?.id) {
         toast.success(`${res.data?.title} filteri o'chirildi`);
 
-        await get().getAllGeneralFilters();
         await get().getAllSpecificFilters();
       }
     } catch (err) {
@@ -141,7 +94,6 @@ export const FilterStore = create((set, get) => ({
 
       if (res.data[0]?.id) {
         toast.success("Filtrlar muvaffaqiyatli qo'shildi");
-        await get().getAllGeneralFilters();
       }
     } catch (err) {
       toast.error(err.message || "Brandlarni olishda xatolik");
@@ -156,7 +108,6 @@ export const FilterStore = create((set, get) => ({
 
       if (res.data?.id) {
         toast.success(res.data?.value + " muvaffaqiyatli o'chirildi");
-        await get().getAllGeneralFilters();
       }
     } catch (err) {
       toast.error(err.message || "Brandlarni olishda xatolik");

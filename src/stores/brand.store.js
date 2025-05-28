@@ -4,15 +4,26 @@ import axiosInstance from "./axios/axios";
 
 export const BrandStore = create((set, get) => ({
   allBrands: [],
+  brandByCategory: [],
 
   async getAllBrands() {
     try {
       const res = await axiosInstance.get("/products/brand");
 
-      console.log(res);
-
       if (res.data[0]?.id) {
         set({ allBrands: res.data });
+      }
+    } catch (err) {
+      toast.error(err.message || "Brandlarni olishda xatolik");
+    }
+  },
+
+  async getBrandsByCategoryId(id) {
+    try {
+      const res = await axiosInstance.get("/products/brand/" + id);
+
+      if (res.data[0]?.id) {
+        set({ brandByCategory: res.data });
       }
     } catch (err) {
       toast.error(err.message || "Brandlarni olishda xatolik");
@@ -28,6 +39,7 @@ export const BrandStore = create((set, get) => ({
 
       if (res.data?.createdRelations) {
         toast.success("Brand muvaffaqiyatli yaratildi");
+        await get().getAllBrands();
       }
     } catch (err) {
       toast.error(err.message || "Brandlarni olishda xatolik");
