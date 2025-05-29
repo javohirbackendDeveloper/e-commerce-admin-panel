@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import AddBrandModal from "./addBrandModal/AddBrandModal";
 import { CategoryStore } from "../../stores/category.store";
+import { useSearch } from "../../components/header/searchInput/SearchContext";
 function Brand() {
   const { getAllBrands, allBrands, deleteBrand } = BrandStore();
   const [showModal, setShowModal] = useState(false);
@@ -31,6 +32,13 @@ function Brand() {
     setSelectedBrand(brand);
   };
 
+  // searching items
+  const { query } = useSearch();
+
+  const filtered = allBrands.filter((p) =>
+    p?.name.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <div className="brand">
       <Button className="addbtn" onClick={() => setShowModal(!showModal)}>
@@ -38,7 +46,7 @@ function Brand() {
       </Button>
       <h2>Brendlar</h2>
       <table className="brand-table">
-        {(allBrands.length > 0 && (
+        {(filtered.length > 0 && (
           <>
             <thead>
               <tr>
@@ -49,7 +57,7 @@ function Brand() {
               </tr>
             </thead>
             <tbody>
-              {allBrands?.map((brand, index) => (
+              {filtered?.map((brand, index) => (
                 <tr key={brand.id}>
                   <td>{index + 1}</td>
                   <td>{brand?.name}</td>

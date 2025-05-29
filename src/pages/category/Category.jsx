@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import AddCategoryModal from "./addCategoryModal/AddCategoryModal";
 import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../components/header/searchInput/SearchContext";
 
 function Category() {
   const {
@@ -40,6 +41,13 @@ function Category() {
     navigate("/getOneCategory/" + category.id);
   };
 
+  // searching items
+  const { query } = useSearch();
+
+  const filtered = allCategories.filter((p) =>
+    p.title.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <div className="category">
       <Button
@@ -50,7 +58,7 @@ function Category() {
       </Button>
       <h2>Asosiy turkumlar</h2>
       <table className="category-table">
-        {(allCategories.length > 0 && (
+        {(filtered.length > 0 && (
           <>
             <thead>
               <tr>
@@ -62,8 +70,8 @@ function Category() {
               </tr>
             </thead>
             <tbody>
-              {allCategories.length > 0 &&
-                allCategories.map((category, index) => (
+              {filtered.length > 0 &&
+                filtered.map((category, index) => (
                   <tr
                     key={category.id}
                     onClick={(e) => handleRowClick(category, e)}
@@ -102,7 +110,7 @@ function Category() {
         )) || (
           <div className="notFoundCategory">
             <img src="../noCategory.png" alt="no category" />
-            <h4>Bu turkumga hozircha ichki turkum qo'shilmagan</h4>
+            <h4>Hozircha turkum mavjud emas</h4>
           </div>
         )}
       </table>

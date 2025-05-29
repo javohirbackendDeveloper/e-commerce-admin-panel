@@ -135,8 +135,6 @@ export const ProductStore = create((set, get) => ({
   },
 
   async uploadImage(data) {
-    console.log({ data });
-
     try {
       const res = await axiosMultipartHeader.post(
         "/products/product/uploadImage",

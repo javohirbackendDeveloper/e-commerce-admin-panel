@@ -13,6 +13,8 @@ import Product from "../pages/product/Product";
 import { Popcorn } from "lucide-react";
 import Brand from "../pages/brand/Brand";
 import Variants from "../pages/variant/Variants";
+import Coupons from "../pages/coupons/Coupons";
+import Poster from "../pages/poster/Poster";
 
 export const Pages = [
   {
@@ -61,15 +63,15 @@ export const Pages = [
   {
     id: 8,
     name: "Kuponlar",
-    component: Dashboard,
+    component: Coupons,
     url: "/coupons",
     icon: Coins,
   },
   {
     id: 9,
     name: "Posterlar",
-    component: Dashboard,
-    url: "/posters",
+    component: Poster,
+    url: "/poster",
     icon: Image,
   },
   {

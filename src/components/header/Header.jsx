@@ -1,9 +1,12 @@
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
 import ProfileModal from "./profileModal/ProfileModal";
+import { AuthStore } from "../../stores/auth.store";
+import SearchInput from "./searchInput/SearchInput";
 
 function Header({ pageName }) {
+  const { admin } = AuthStore();
   const [showProfileModal, setShowProfileModal] = useState(false);
   const profileRef = useRef(null);
 
@@ -23,10 +26,7 @@ function Header({ pageName }) {
         <div className="page-name">
           <h2>{pageName}</h2>
         </div>
-        <div className="search-input">
-          <input type="text" placeholder="Qidiring..." />
-          <Search />
-        </div>
+        <SearchInput />
 
         <div className="profile-wrapper" ref={profileRef}>
           <div
@@ -34,9 +34,17 @@ function Header({ pageName }) {
             onClick={() => setShowProfileModal((prev) => !prev)}
           >
             <div className="profile-image">
-              <img src="../profile.png" alt="Profile image" />
+              <img
+                src={admin?.profileImg || "../avatar.png"}
+                alt="Profile image"
+              />
             </div>
-            <span className="username">Javohir Abdusharipov</span>
+            <span className="username">
+              {(admin?.first_name && admin?.last_name
+                ? admin?.first_name + " " + admin?.last_name
+                : admin?.username) || ""}
+            </span>
+
             <ChevronDown className="headerIcon" />
           </div>
 

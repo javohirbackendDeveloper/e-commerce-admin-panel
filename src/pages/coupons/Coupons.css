@@ -1,0 +1,56 @@
+/* coupons.css */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+thead tr {
+  background-color: #1976d2;
+  color: white;
+}
+
+tbody tr:hover {
+  background-color: #f0f4ff;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+.MuiIconButton-root {
+  padding: 6px;
+}
+
+.coupon .notFoundCategory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 40px auto;
+  max-width: 500px;
+}
+
+.coupon .notFoundCategory img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.coupon .notFoundCategory h4 {
+  font-size: 18px;
+  color: #555;
+  font-weight: 500;
+}

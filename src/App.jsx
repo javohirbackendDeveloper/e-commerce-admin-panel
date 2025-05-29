@@ -17,6 +17,9 @@ import GetOneCategory from "./pages/category/getOneCategory/GetOneCategory";
 import Brand from "./pages/brand/Brand";
 import Variants from "./pages/variant/Variants";
 import GetOneFilter from "./pages/variant/getOneFilter/GetOneFilter";
+import Coupons from "./pages/coupons/Coupons";
+import Profile from "./pages/profile/Profile";
+import Poster from "./pages/poster/Poster";
 
 function App() {
   const [pageName, setPageName] = useState("Asosiy panel");
@@ -40,13 +43,14 @@ function App() {
               <Route path="/variants" element={<Variants />} />
               <Route path="/products" element={<Product />} />
               <Route path="/orders" element={<Dashboard />} />
-              <Route path="/coupons" element={<Dashboard />} />
-              <Route path="/posters" element={<Dashboard />} />
+              <Route path="/coupons" element={<Coupons />} />
+              <Route path="/poster" element={<Poster />} />
               <Route path="/notifications" element={<Dashboard />} />
 
               {/* OTHER PAGES */}
               <Route path="/getOneCategory/:id" element={<GetOneCategory />} />
               <Route path="/getOneFilter/:id" element={<GetOneFilter />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </div>

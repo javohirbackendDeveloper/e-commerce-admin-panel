@@ -4,6 +4,7 @@ import AddProductModal from "./addProductModal/AddProductModal";
 import "./Product.css";
 import { ProductStore } from "../../stores/product.store";
 import ImageModal from "./imageModal/ImageModal";
+import { useSearch } from "../../components/header/searchInput/SearchContext";
 
 function Product() {
   const [showModal, setShowModal] = useState(false);
@@ -36,6 +37,14 @@ function Product() {
     setImageModal(true);
     setProduct(product);
   };
+
+  // searching items
+  const { query } = useSearch();
+
+  const filtered = allProduct.filter((p) =>
+    p?.product_name.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <div className="product-page">
       <Button
@@ -62,7 +71,7 @@ function Product() {
         />
       )}
 
-      {(allProduct.length > 0 && (
+      {(filtered.length > 0 && (
         <div className="table-container">
           <table className="product-table">
             <thead>
@@ -78,8 +87,8 @@ function Product() {
               </tr>
             </thead>
             <tbody>
-              {allProduct.length > 0 &&
-                allProduct.map((product) => (
+              {filtered.length > 0 &&
+                filtered.map((product) => (
                   <tr key={product.id}>
                     <td onClick={() => handleImageClicked(product)}>
                       <img

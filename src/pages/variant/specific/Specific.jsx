@@ -6,18 +6,15 @@ import { FilterStore } from "../../../stores/filter.store";
 import "./Specific.css";
 import AddValueModal from "../addValueModal/AddValueModal";
 import { Link } from "react-router-dom";
+import { useSearch } from "../../../components/header/searchInput/SearchContext";
 
 function Specific() {
   const [showModal, setShowModal] = useState(false);
   const [showValueModal, setShowValueModal] = useState(false);
   const [editingFilter, setEditingFilter] = useState(null);
   const [selectedFilter, setSelectedValue] = useState("");
-  const {
-    allSpecificFilters,
-    allGeneralFilters,
-    deleteFilter,
-    getAllSpecificFilters,
-  } = FilterStore();
+  const { allSpecificFilters, deleteFilter, getAllSpecificFilters } =
+    FilterStore();
 
   useEffect(() => {
     getAllSpecificFilters();
@@ -37,6 +34,13 @@ function Specific() {
       await deleteFilter(id);
     }
   };
+
+  // searching items
+  const { query } = useSearch();
+
+  const filtered = allSpecificFilters.filter((p) =>
+    p?.title.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <div className="general">
@@ -72,7 +76,7 @@ function Specific() {
 
       <div className="filter-table-wrapper">
         <table className="filter-table">
-          {allSpecificFilters && allSpecificFilters.length > 0 ? (
+          {filtered && filtered.length > 0 ? (
             <>
               <thead>
                 <tr>
@@ -84,7 +88,7 @@ function Specific() {
                 </tr>
               </thead>
               <tbody>
-                {allSpecificFilters.map((filter, index) => (
+                {filtered.map((filter, index) => (
                   <tr key={filter.id}>
                     <td>{index + 1}</td>
                     <td className="linkTd">

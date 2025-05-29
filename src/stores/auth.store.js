@@ -9,7 +9,6 @@ export const AuthStore = create((set, get) => ({
   async login(data, navigate) {
     try {
       const res = await axiosInstance.post("/auth/admin/login", data);
-      console.log({ res });
 
       if (res && res.data && res.data?.accessToken) {
         window.localStorage.setItem("accessToken", res.data?.accessToken);
@@ -25,6 +24,7 @@ export const AuthStore = create((set, get) => ({
         );
       }
     } catch (err) {
+      toast.error(err.message);
       console.log("Login errror", err);
     }
   },
